@@ -51,7 +51,7 @@ Public NotInheritable Class MainForm
 
 
         Dim htmlPath As String = Environment.GetCommandLineArgs()(0)
-        htmlPath = Path.Combine(Path.GetDirectoryName(htmlPath), "HtmlRoot")
+        htmlPath = Path.Combine(Path.GetDirectoryName(htmlPath), "..\HtmlRoot")
 
         Dim htmlRootFile As String = Path.Combine(htmlPath, "Root.html")
         If File.Exists(htmlRootFile) Then
@@ -67,6 +67,28 @@ Public NotInheritable Class MainForm
         '    _wb2.Source = New Uri(htmlRootFile)
         'End If
     End Sub
+
+
+
+    ''' <summary>
+    ''' ???
+    ''' </summary>
+    ''' <param name="e"></param>
+    Protected Overrides Sub OnResizeBegin(e As EventArgs)
+        MyBase.OnResizeBegin(e)
+        SuspendLayout()
+    End Sub
+
+
+    ''' <summary>
+    ''' ???
+    ''' </summary>
+    ''' <param name="e"></param>
+    Protected Overrides Sub OnResizeEnd(e As EventArgs)
+        MyBase.OnResizeEnd(e)
+        ResumeLayout(True)
+    End Sub
+
 
 
     ''' <summary>
